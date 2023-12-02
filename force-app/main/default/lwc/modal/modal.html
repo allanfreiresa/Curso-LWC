@@ -1,0 +1,21 @@
+<template>
+    <lightning-modal-header label="Meu Modal"></lightning-modal-header>
+
+    <lightning-modal-body>
+        <template for:each={options} for:item="option">
+            <lightning-button
+              onclick={handleOptionClick}
+              data-id={option.id}
+              data-value={option.value}
+              key={option.id}
+              label={option.label}
+            >
+            </lightning-button>
+        </template>
+    </lightning-modal-body>
+
+    <lightning-modal-footer>
+        <lightning-button label="Fechar" onclick={handleOkay}></lightning-button>
+    </lightning-modal-footer>
+
+</template>

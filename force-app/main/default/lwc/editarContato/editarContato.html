@@ -1,0 +1,28 @@
+<template>
+    <lightning-card title="Cadastro" icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+            <p>{recordId}</p>
+            <br/>
+            <br/>
+            <br/>
+            <lightning-record-edit-form 
+                object-api-name="Contact" 
+                record-id={recordId}
+                onsuccess={handleContact}
+                >
+
+                <lightning-input-field field-name="Name"> </lightning-input-field>
+                <lightning-input-field field-name="Phone"> </lightning-input-field>
+                <lightning-input-field field-name="AccountId"> </lightning-input-field>
+
+                <lightning-button
+                    class="slds-m-top_small"
+                    type="submit"
+                    label="Criar Contato"
+                >
+                </lightning-button>
+
+            </lightning-record-edit-form>
+        </div>
+    </lightning-card>
+</template>

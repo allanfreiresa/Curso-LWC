@@ -1,0 +1,44 @@
+<template>
+    <lightning-card title="Accordion" icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+            
+            <template if:false={serieEscolhida}>
+                <lightning-combobox
+                    name="serie"
+                    label="Qual a sua Série"
+                    value={serie}
+                    placeholder="Selecione sua Série"
+                    options={optionsSeries}
+                    onchange={handleChange} >
+                </lightning-combobox>
+            </template>
+
+            <template if:true={serieEscolhida}>
+
+                <lightning-accordion    onsectiontoggle={handleToggleSection}
+                                        active-section-name={serieQueFoiEscolhida}
+                                        allow-multiple-sections-open>
+                    <template if:true={a}>
+                        <lightning-accordion-section name="serie1" label="Accordion Série 1">
+                            <p>Foi selecionado a série {serieQueFoiEscolhida}</p>
+                        </lightning-accordion-section>
+                    </template>
+
+                    <template if:true={b}>
+                        <lightning-accordion-section name="serie2" label="Accordion Série 2">
+                            <p>Foi selecionado a série {serieQueFoiEscolhida}</p>
+                        </lightning-accordion-section>
+                    </template>
+
+                    <template if:true={c}>
+                        <lightning-accordion-section name="serie3" label="Accordion Série 3">
+                            <p>Foi selecionado a série {serieQueFoiEscolhida}</p>
+                        </lightning-accordion-section>
+                    </template>
+
+                </lightning-accordion>
+
+            </template>
+        </div>
+    </lightning-card>
+</template>
