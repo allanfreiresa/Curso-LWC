@@ -1,0 +1,18 @@
+<template>
+    
+    <lightning-card>
+        <h1 style="font-size: 25px; text-align:center">Componente Pai</h1>
+        <br/>
+        <template if:true={dadosPai}>
+            <c-carousel
+                dados={dadosPai}
+                onpassavalor={handleClickItemSelecionadaPai}
+            ></c-carousel>
+            <br/>
+            <c-carousel
+                dados={dadosPai}
+                onpassavalor={handleClickItemSelecionadaPai}
+            ></c-carousel>
+        </template>
+    </lightning-card>
+</template>

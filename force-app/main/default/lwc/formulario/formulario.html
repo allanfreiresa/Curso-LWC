@@ -1,0 +1,80 @@
+<template>
+    <lightning-card>
+        <div class="slds-p-around_medium">
+            <template for:each={fields} for:item="field" >
+                <div key={field}>
+                  <lightning-layout>
+                    <lightning-layout-item size="4">
+                        <template if:true={field.typeText}>
+                          <lightning-input type="text" label={field.label} onchange={handleChange} name={field.fieldPath}></lightning-input>
+                        </template>
+                        <template if:true={field.typeSearch}>
+                            <c-custom-lookup-comp></c-custom-lookup-comp>
+                        </template>
+                        <template if:true={field.typePicklist}>
+                          <lightning-combobox name={field.fieldPath}
+                              label={field.label}
+                              value={field.value}
+                              placeholder="-Select-"
+                              options={field.picklistValues}
+                              onchange={handleChange} >
+                          </lightning-combobox>
+                      </template>
+                      <template if:true={field.typeTel}>
+                          <lightning-input type="tel" label={field.label} onchange={handleChange} name={field.fieldPath}></lightning-input>
+                      </template>
+                      <template if:true={field.typeEmail}>
+                          <lightning-input type="email" label={field.label} onchange={handleChange} name={field.fieldPath}></lightning-input>
+                      </template>
+                        <template if:true={field.typeUrl}>
+                          <lightning-input type="url" label={field.label} onchange={handleChange} name={field.fieldPath}></lightning-input>
+                      </template>
+                      <template if:true={field.typeNumber}>
+                        <lightning-input type="number" label={field.label} onchange={handleChange} name={field.fieldPath}></lightning-input>
+                    </template>
+                        <template if:true={field.typeDate}>
+                            <lightning-input type="date" label={field.label} onchange={handleChange} name={field.fieldPath}></lightning-input>
+                        </template>
+                    </lightning-layout-item>
+                  </lightning-layout>
+                </div>
+            </template>
+        </div>
+
+        <div class="slds-p-around_medium">
+          <lightning-layout>
+            <lightning-layout-item style="padding: 5px;">
+            <lightning-button variant="brand" type="submit" label="Save" class="slds-m-top_small" onclick={saveLead}></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item style="padding: 5px;">
+            <lightning-button variant="brand" label="Add Sub Lead" onclick={addSubLead}></lightning-button>
+            </lightning-layout-item>
+          </lightning-layout>
+        </div>
+
+        <div class="slds-p-around_medium">
+          <template for:each={subLeads} for:item="subLead" for:index="index">
+            <div key={subLead.id} style="border: solid 1px rgb(197, 175, 175); padding:5px;">
+              <lightning-layout>
+                <lightning-layout-item size="6" style="padding: 5px;">
+                  <lightning-input label="Name" value={subLead.name} onchange={handleNameChange} data-index={index}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="4" style="padding: 5px;">
+                  <lightning-input label="Age" value={subLead.age} onchange={handleAgeChange} data-index={index}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item style="padding: 5px;">
+                  <lightning-button-icon icon-name="utility:delete" alternative-text="Delete" title="Delete" onclick={handleDelete} data-index={index}></lightning-button-icon>
+                </lightning-layout-item>
+              </lightning-layout>
+            </div>
+          </template>
+          
+          <lightning-layout>
+            <lightning-layout-item style="padding: 5px;">
+              <lightning-button variant="brand" type="submit" label="Save" class="slds-m-top_small" onclick={saveAddSubLead}></lightning-button>
+            </lightning-layout-item>
+          </lightning-layout>
+
+        </div>
+      </lightning-card>
+</template>

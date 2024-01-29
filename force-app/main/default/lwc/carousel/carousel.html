@@ -1,0 +1,63 @@
+<template>
+    <div class="slds-size_3-of-4" style="background-color: aliceblue;">
+        <div class="slds-box sdls-box_x-small slds-text-align_center slds-m-around_x-small">
+            <h1 style="font-size: 20px;"><b>Basic Carousel</b></h1>
+
+            <div class="carousel">
+                <div class="slider" style={posicao}>
+
+                    <template for:each={dados} for:item="d" for:index="index">
+                        <div key={d.id} class={slideJs}>
+                            <h2><b>{d.empresa}</b></h2>
+                            <div style="color: black; padding: 0 20px">
+                                <lightning-input value={d.empresa} onchange={mudarvalor} data-index={index}></lightning-input>
+                            </div>
+
+                            <template for:each={d.produtos} for:item="p">
+                                <div key={p.id}>
+                                    <h2><b>{p.nome}</b></h2>
+                                </div>
+                            </template>
+
+                            <template for:each={d.distribuidoras} for:item="dt">
+                                <div key={dt.id}>
+                                    <h2><b>{dt.nome}</b></h2>
+
+                                    <template for:each={d.lojas} for:item="l">
+                                        <div key={l.id}>
+                                            <h2><b>{l.nome}</b></h2>
+                                        </div>
+                                    </template>
+
+                                </div>
+                            </template>
+                            
+                        </div>
+                    </template>
+
+                </div>
+
+                <div class="botoes">
+                    <lightning-layout>
+                        <lightning-layout-item flexibility="auto">
+                            <div class="slds-text-align_left">
+                                <button onclick={previousSlide} disabled={botaoRetorno}> &laquo; </button>
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item flexibility="auto">
+                            <div class="slds-text-align_center">
+                                <lightning-button variant="success" label="Selecionar" onclick={handleClickItemSelecionada}></lightning-button>
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item flexibility="auto">
+                            <div class="slds-text-align_right">
+                                <button onclick={nextSlide} disabled={botaoAvanca}> &raquo;</button>
+                            </div>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</template>
